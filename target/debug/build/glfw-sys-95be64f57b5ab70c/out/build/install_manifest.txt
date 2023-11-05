@@ -1,0 +1,8 @@
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/lib/glfw3.lib
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/include/GLFW/glfw3.h
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/include/GLFW/glfw3native.h
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/lib/cmake/glfw3/glfw3Config.cmake
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/lib/cmake/glfw3/glfw3ConfigVersion.cmake
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/lib/cmake/glfw3/glfw3Targets.cmake
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/lib/cmake/glfw3/glfw3Targets-debug.cmake
+D:/srengp/target/debug/build/glfw-sys-95be64f57b5ab70c/out/lib/pkgconfig/glfw3.pc

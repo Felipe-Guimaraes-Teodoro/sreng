@@ -1,0 +1,8 @@
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/lib/glfw3.lib
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/include/GLFW/glfw3.h
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/include/GLFW/glfw3native.h
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/lib/cmake/glfw3/glfw3Config.cmake
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/lib/cmake/glfw3/glfw3ConfigVersion.cmake
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/lib/cmake/glfw3/glfw3Targets.cmake
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/lib/cmake/glfw3/glfw3Targets-release.cmake
+D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/lib/pkgconfig/glfw3.pc

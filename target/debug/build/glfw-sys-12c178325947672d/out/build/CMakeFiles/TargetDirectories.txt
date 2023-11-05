@@ -1,0 +1,7 @@
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/CMakeFiles/uninstall.dir
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/CMakeFiles/INSTALL.dir
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/CMakeFiles/ALL_BUILD.dir
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/CMakeFiles/ZERO_CHECK.dir
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/src/CMakeFiles/update_mappings.dir
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/src/CMakeFiles/glfw.dir
+D:/srengp/target/debug/build/glfw-sys-12c178325947672d/out/build/src/CMakeFiles/INSTALL.dir

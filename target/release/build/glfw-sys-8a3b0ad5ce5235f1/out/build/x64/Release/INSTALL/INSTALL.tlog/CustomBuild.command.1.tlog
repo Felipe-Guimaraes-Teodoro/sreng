@@ -1,0 +1,10 @@
+^D:\SRENGP\TARGET\RELEASE\BUILD\GLFW-SYS-8A3B0AD5CE5235F1\OUT\BUILD\CMAKEFILES\50B6A32484617FC2DFB9C97E3C1CDB43\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

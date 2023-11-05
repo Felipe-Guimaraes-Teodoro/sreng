@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\srengp\target\release\build\glfw-sys-8a3b0ad5ce5235f1\out\build\CMakeFiles\50b6a32484617fc2dfb9c97e3c1cdb43\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E6C03579-6BCD-3863-BB33-BDCB4BFE3A07}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

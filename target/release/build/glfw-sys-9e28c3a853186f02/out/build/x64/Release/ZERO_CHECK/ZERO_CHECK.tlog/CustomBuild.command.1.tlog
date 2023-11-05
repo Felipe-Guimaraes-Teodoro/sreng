@@ -1,0 +1,10 @@
+^D:\SRENGP\TARGET\RELEASE\BUILD\GLFW-SYS-9E28C3A853186F02\OUT\BUILD\CMAKEFILES\24288F058E6899D86CB081ACD73B9584\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Usuario/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glfw-sys-4.0.0+3.3.5 -BD:/srengp/target/release/build/glfw-sys-9e28c3a853186f02/out/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/srengp/target/release/build/glfw-sys-9e28c3a853186f02/out/build/GLFW.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

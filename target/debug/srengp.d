@@ -1,0 +1,1 @@
+D:\srengp\target\debug\srengp.exe: D:\srengp\src\application.rs D:\srengp\src\event_loop.rs D:\srengp\src\events.rs D:\srengp\src\main.rs D:\srengp\src\renderer\camera.rs D:\srengp\src\renderer\mesh.rs D:\srengp\src\renderer\mod.rs D:\srengp\src\renderer\renderer.rs D:\srengp\src\renderer\shader.rs D:\srengp\src\renderer\shapes.rs D:\srengp\src\renderer\util.rs

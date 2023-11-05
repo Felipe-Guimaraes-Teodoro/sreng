@@ -1,0 +1,10 @@
+^C:\USERS\USUARIO\.CARGO\REGISTRY\SRC\INDEX.CRATES.IO-6F17D22BBA15001F\GLFW-SYS-4.0.0+3.3.5\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Usuario/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glfw-sys-4.0.0+3.3.5 -BD:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/build --check-stamp-file D:/srengp/target/release/build/glfw-sys-8a3b0ad5ce5235f1/out/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

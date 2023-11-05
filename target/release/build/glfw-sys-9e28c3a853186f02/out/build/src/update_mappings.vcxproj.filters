@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\CMakeFiles\50be7f0dd52a0f57cb7b634f78ead60a\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\CMake\GenerateMappings.cmake" />
+    <None Include="D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{CDAEB249-E7BC-3B38-969C-D622754C78CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{A6B89308-4683-32F3-81C6-BBB631384507}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

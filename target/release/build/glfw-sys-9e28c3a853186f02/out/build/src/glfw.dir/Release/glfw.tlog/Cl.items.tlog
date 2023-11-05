@@ -1,0 +1,15 @@
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\context.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\context.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\init.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\init.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\input.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\input.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\monitor.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\monitor.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\vulkan.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\vulkan.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\window.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\window.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\win32_init.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\win32_init.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\win32_joystick.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\win32_joystick.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\win32_monitor.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\win32_monitor.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\win32_time.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\win32_time.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\win32_thread.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\win32_thread.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\win32_window.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\win32_window.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\wgl_context.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\wgl_context.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\egl_context.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\egl_context.obj
+C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\src\osmesa_context.c;D:\srengp\target\release\build\glfw-sys-9e28c3a853186f02\out\build\src\glfw.dir\Release\osmesa_context.obj

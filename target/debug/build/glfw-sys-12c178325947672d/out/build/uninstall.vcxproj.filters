@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\srengp\target\debug\build\glfw-sys-12c178325947672d\out\build\CMakeFiles\459042d45130bae75875cac318b727d1\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Usuario\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glfw-sys-4.0.0+3.3.5\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\srengp\target\debug\build\glfw-sys-12c178325947672d\out\build\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{8EE34282-C25D-3C19-A8A5-DAC744AD39BF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
