@@ -1,6 +1,7 @@
 extern crate glfw;
 
 use crate::{application::App, events};
+use crate::ui::Imgui;
 use glfw::Context;
 
 pub async fn run() {
@@ -28,10 +29,12 @@ pub async fn run() {
     //load gl functions
     gl::load_with(|s| window.get_proc_address(s) as * const _);
 
-    let mut app = App::new(window, glfw);
+    let ctx = imgui::Context::create();
+    let ui = Imgui::new(ctx, &mut window);
+    let mut app = App::new(window, glfw, ui);
 
     while !app.window_mut().should_close() {
-        events::handle_events(&mut app, &events);
+        events::handle_events(&mut app,&events);
         app.update();
         unsafe {
             app.draw();

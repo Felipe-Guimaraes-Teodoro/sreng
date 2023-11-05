@@ -1,5 +1,5 @@
 use glfw::*;
-use crate::renderer::*;
+use crate::{renderer::*, ui::Imgui}; 
 use cgmath::*;
 
 pub struct App {
@@ -7,11 +7,13 @@ pub struct App {
     window: Window,
     glfw: Glfw,
 
+    pub ui: Imgui,
+
     renderer: Renderer,
 }
 
 impl App {
-    pub fn new(window: Window, mut glfw: Glfw,) -> Self {
+    pub fn new(window: Window, mut glfw: Glfw, ui: Imgui) -> Self {
         let mut renderer = Renderer::new();
         glfw.set_swap_interval(glfw::SwapInterval::Sync(1));
         // renderer.camera.set_projection(ProjectionType::Orthographic);
@@ -22,11 +24,14 @@ impl App {
         Self {
             window,
             glfw,
+            ui,
             renderer,
         }
     }
 
     pub fn update(&mut self) {
+        let frame = self.ui.frame(&mut self.window);
+        frame.show_demo_window(&mut true);
         let dt = self.renderer.camera.dt as f32;
 
         // self.renderer.get_mesh(0);
@@ -36,6 +41,7 @@ impl App {
 
     pub unsafe fn draw(&mut self) {
         self.renderer.draw();
+        self.ui.draw();
     }
 
     pub fn window_mut(&mut self) -> &mut Window {

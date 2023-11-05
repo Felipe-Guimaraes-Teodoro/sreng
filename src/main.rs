@@ -6,7 +6,7 @@
  * TODO: 
  *
  * RENDERER 
- *  imgui implementation
+ *  imgui implementation (keyboard input implementation)
  *
  * ENGINE 
  *  physics
@@ -18,6 +18,8 @@ mod event_loop;
 mod application;
 mod renderer;
 mod events;
+mod ui;
+
 
 use crate::event_loop::run;
 
