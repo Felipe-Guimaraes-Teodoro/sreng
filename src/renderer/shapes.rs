@@ -1,4 +1,5 @@
 use crate::renderer::Mesh;
+use cgmath::Vector3;
 
 pub struct Shapes { }
 
@@ -34,4 +35,31 @@ impl Shapes {
         Mesh::new(vertices, indices)
     }
 
+    pub fn cube_raw(p: Vector3<f32>, i: u32) -> (Vec<f32>, Vec<u32>) {
+        (vec![
+            -1.0 + p.x, -1.0 + p.y,  1.0 + p.z, //0
+             1.0 + p.x, -1.0 + p.y,  1.0 + p.z, //1
+            -1.0 + p.x,  1.0 + p.y,  1.0 + p.z, //2
+             1.0 + p.x,  1.0 + p.y,  1.0 + p.z, //3
+            -1.0 + p.x, -1.0 + p.y, -1.0 + p.z, //4
+             1.0 + p.x, -1.0 + p.y, -1.0 + p.z, //5
+            -1.0 + p.x,  1.0 + p.y, -1.0 + p.z, //6
+             1.0 + p.x,  1.0 + p.y, -1.0 + p.z  //7
+        ],
+        
+        vec![
+            2 + 8 * i, 6 + 8 * i, 7 + 8 * i, // top
+            2 + 8 * i, 3 + 8 * i, 7 + 8 * i,
+            0 + 8 * i, 4 + 8 * i, 5 + 8 * i, // bottom
+            0 + 8 * i, 1 + 8 * i, 5 + 8 * i,
+            0 + 8 * i, 2 + 8 * i, 6 + 8 * i, // left
+            0 + 8 * i, 4 + 8 * i, 6 + 8 * i,
+            1 + 8 * i, 3 + 8 * i, 7 + 8 * i, // right
+            1 + 8 * i, 5 + 8 * i, 7 + 8 * i,
+            0 + 8 * i, 2 + 8 * i, 3 + 8 * i, // front
+            0 + 8 * i, 1 + 8 * i, 3 + 8 * i,
+            4 + 8 * i, 6 + 8 * i, 7 + 8 * i, // back
+            4 + 8 * i, 5 + 8 * i, 7 + 8 * i
+        ],)
+    }
 }

@@ -174,6 +174,34 @@ pub const MANDELBROT_FS: &str = r#"
         }
 "#;
 
+pub const VS2: &str = r#"
+    #version 330
+    layout (location = 0) in vec3 aPos;
+
+    uniform mat4 proj; 
+    uniform mat4 view;
+    uniform mat4 model;
+    
+    out vec3 vert_pos;
+
+    void main() {
+        gl_Position = proj * view * model * vec4(aPos, 1.0);
+        vert_pos = aPos / 32;
+    }
+"#;
+
+pub const FS2: &str = r#"
+    #version 330
+
+    in vec3 vert_pos;
+    out vec4 frag_color;
+
+    void main() {
+        frag_color = vec4(vert_pos, 1.0);
+    }
+"#;
+
+
 #[macro_export]
 macro_rules! cstr{
     ($s: expr) => {

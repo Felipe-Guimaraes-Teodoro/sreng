@@ -1,6 +1,5 @@
 use cgmath::*;
 
-use cgmath::*;
 use glfw::{self, Action, Key};
 
 use crate::renderer::Shader;

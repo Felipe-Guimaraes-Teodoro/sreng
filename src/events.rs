@@ -1,5 +1,4 @@
 use crate::application::App;
-use crate::ui::Imgui;
 use glfw::{Key, Action, WindowEvent};
 use std::sync::mpsc::Receiver;
 
