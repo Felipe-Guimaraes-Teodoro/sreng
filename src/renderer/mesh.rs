@@ -1,8 +1,15 @@
 use crate::renderer::Shader;
+use crate::renderer::util::{DVS, DFS};
 use crate::renderer::BufferConstruct;
 use crate::cstr;
 use cgmath::*;
 use gl::*;
+
+use lazy_static::lazy_static;
+
+lazy_static!{
+    static ref DEFAULT_SHADER: Shader = Shader::new_pipeline(DVS, DFS);
+}
 
 #[derive(Debug)]
 pub struct Mesh {
@@ -12,7 +19,7 @@ pub struct Mesh {
     vertices: Vec<f32>,
     indices: Vec<u32>,
 
-    model: Matrix4<f32>,
+    pub model: Matrix4<f32>,
 }
 
 impl Mesh {
@@ -40,10 +47,35 @@ impl Mesh {
         }
     }
 
+    pub fn new_with_shader(vertices: Vec<f32>, indices: Vec<u32>) -> Self {
+        let buffer_construct = unsafe {
+            BufferConstruct::new_indexed(&vertices, &indices)
+        };
+
+        // let model = Matrix4::from_translation(vec3(0.0, 0.0, 0.0));
+        let model = 
+            Matrix4::from_angle_y(Deg(90.0)) 
+            * Matrix4::from_translation(vec3(0.0, 0.0, 2.0));
+
+        Self {
+            // shader,
+            buffer_construct,
+
+            vertices,
+            indices,
+
+            model,
+        }
+    }
+
     pub fn with_translation(mut self, v: Vector3<f32>) -> Self {
         self.model = self.model * Matrix4::from_translation(v);
 
         self
+    }
+
+    pub fn set_translation(&mut self, v: Vector3<f32>) {
+        self.model = Matrix4::from_translation(v);
     }
 
     pub fn rect(x: f32, y:f32) -> Self {
@@ -68,6 +100,7 @@ impl Mesh {
     pub unsafe fn draw(&mut self, shader: &Shader) {
         // send uniforms to the shader (assuming its the default shader)
         // todo!(): better way to do this ^^ 
+        
         shader.use_shader();
         shader.uniform_mat4fv(
             cstr!("model"),
@@ -83,6 +116,13 @@ impl Mesh {
             std::ptr::null()
         );
         BindVertexArray(0);
+    }
+
+    pub unsafe fn draw_default_shader(&mut self) {
+        self.draw(&DEFAULT_SHADER);
+    }
+
+    pub unsafe fn draw_instanced(&mut self, shader: &Shader) { // maybe use vec![] of meshes
     }
 
     pub fn translate(&mut self, v: Vector3<f32>) {

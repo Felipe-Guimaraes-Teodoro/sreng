@@ -1,15 +1,26 @@
 use glfw::*;
-use crate::{renderer::*, ui::Imgui}; 
+use crate::{renderer::*, ui::Imgui, physics::*}; 
 use cgmath::*;
+use rand::prelude::*;
 
 pub struct App {
     // todo: renderer, ui
     window: Window,
     glfw: Glfw,
-
     pub ui: Imgui,
-
     renderer: Renderer,
+
+    obj: Vec<PPoint>,
+    controller: Controller,
+}
+
+fn rand_vec3() -> Vector3<f32> {
+    let mut g = rand::thread_rng();
+    let x = g.gen_range(-10.0..=10.0);
+    let y = g.gen_range(0.0..=900.0);
+    let z = g.gen_range(-10.0..=10.0);
+
+    vec3(x, y, z)
 }
 
 impl App {
@@ -19,51 +30,61 @@ impl App {
         // glfw.set_swap_interval(glfw::SwapInterval::Sync(1));
         // renderer.camera.set_projection(ProjectionType::Orthographic);
         
-        renderer.push_mesh_with_shader(Shapes::grid(256), Shader::new_pipeline(DVS, MANDELBROT_FS));
-        renderer.push_mesh(Shapes::grid(1000000).with_translation(vec3(0.0, 0.0, -30.0)));
-
-        let cubes = {
-            let mut verts = vec![];
-            let mut inds = vec![];
-            let mut num = 0;
-            for x in 0..32 {
-                for y in 0..32 {
-                    for z in 0..32 {
-                        let cube = Shapes::cube_raw(vec3(x as f32, y as f32, z as f32), num);
-                        verts.extend_from_slice(&cube.0);
-                        inds.extend_from_slice(&cube.1);
-
-                        num += 1;
-                    }
-                }
-            }
-            Mesh::new(verts, inds)
-        };
-        renderer.push_mesh_with_shader(
-            cubes.with_translation(vec3(64.0, 0.0, 0.0)),
-            Shader::new_pipeline(VS2, FS2)
+        renderer.push_mesh(
+            Shapes::floor(500.0, 500.0),
         );
 
+        let mut obj = vec![];
+        for i in 0..1 {
+            obj.push(
+                PPoint::new(
+                    rand_vec3(),
+                    rand_vec3(),
+                    1.0,
+                    1.0,
+                )
+            );
+            let mut cube = Shapes::cube(vec3(0.0, 0.99, 0.0));
+            cube.model += Matrix4::from_scale(100.0);
+            renderer.push_mesh_with_shader(
+                cube,
+                Shader::new_pipeline(VS2, FS2)
+            );
+        }
+
+        let controller = Controller::new();
 
         Self {
             window,
             glfw,
             ui,
             renderer,
+
+            obj,
+            controller,
         }
     }
 
     pub fn update(&mut self) {
         // let cube = &self.renderer.meshes[2].0;
 
-
         // self.renderer.get_mesh(0);
         self.renderer.update(&mut self.window, &mut self.glfw);
+        
         // println!("{:.2}", 1.0 / dt);
         let frame = self.ui.frame(&mut self.window);
-        frame.show_demo_window(&mut true);
 
-        frame.text("hellO!");
+        frame.text("Hello, world!");
+
+        // for i in 0..self.obj.len() {
+        //     self.obj[i].update();
+        //     self.renderer.meshes[i+1].0.set_translation(
+        //         self.obj[i].pos
+        //     );
+        // }
+
+        self.controller.input(&mut self.window, &mut self.renderer.camera);
+        self.controller.update();
     }
 
     pub unsafe fn draw(&mut self) {

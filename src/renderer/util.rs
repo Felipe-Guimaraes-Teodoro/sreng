@@ -186,7 +186,7 @@ pub const VS2: &str = r#"
 
     void main() {
         gl_Position = proj * view * model * vec4(aPos, 1.0);
-        vert_pos = aPos / 32;
+        vert_pos = aPos;
     }
 "#;
 

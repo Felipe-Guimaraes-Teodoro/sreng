@@ -6,6 +6,8 @@ use cgmath::*;
 use std::ptr;
 use std::ffi::CStr;
 
+use crate::renderer::{DFS, DVS};
+
 #[derive(Clone, Copy, Debug)]
 pub struct Shader {
     pub id: u32,

@@ -17,6 +17,7 @@
 mod event_loop;
 mod application;
 mod renderer;
+mod physics;
 mod events;
 mod ui;
 

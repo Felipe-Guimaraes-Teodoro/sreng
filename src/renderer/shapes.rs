@@ -1,5 +1,5 @@
 use crate::renderer::Mesh;
-use cgmath::Vector3;
+use cgmath::*;
 
 pub struct Shapes { }
 
@@ -61,5 +61,18 @@ impl Shapes {
             4 + 8 * i, 6 + 8 * i, 7 + 8 * i, // back
             4 + 8 * i, 5 + 8 * i, 7 + 8 * i
         ],)
+    }
+
+    pub fn floor(x: f32, y: f32) -> Mesh {
+        let mut mesh = Mesh::rect(x, y);
+        mesh.model = Matrix4::from_angle_x(Deg(90.0));
+
+        mesh
+    }
+
+    pub fn cube(v: Vector3<f32>) -> Mesh {
+        let cube_raw = Self::cube_raw(v, 0);
+
+        Mesh::new(cube_raw.0, cube_raw.1)
     }
 }

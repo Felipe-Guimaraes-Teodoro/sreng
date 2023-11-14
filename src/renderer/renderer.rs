@@ -33,6 +33,7 @@ impl Renderer {
 
     pub unsafe fn draw(&mut self) {
         Clear(COLOR_BUFFER_BIT | DEPTH_BUFFER_BIT);
+        // Clear(DEPTH_BUFFER_BIT);
         Enable(DEPTH_TEST);
         PointSize(2.0);
         ClearColor(0.03, 0.09, 0.16, 1.0);

@@ -19,12 +19,12 @@ pub struct Camera {
     pub proj: Matrix4<f32>,
     pub view: Matrix4<f32>,
 
-    pos: Vector3<f32>,
+    pub pos: Vector3<f32>,
     target: Vector3<f32>,
     direction: Vector3<f32>,
-    right: Vector3<f32>,
-    front: Vector3<f32>,
-    up: Vector3<f32>,
+    pub right: Vector3<f32>,
+    pub front: Vector3<f32>,
+    pub up: Vector3<f32>,
 
     pitch: f32,
     yaw: f32,
