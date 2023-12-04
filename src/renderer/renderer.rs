@@ -40,7 +40,7 @@ impl Renderer {
 
         for (mesh, shader_idx) in self.meshes.iter_mut() {
             self.camera.send_uniforms(&self.shaders[*shader_idx]);
-            mesh.draw(&self.shaders[*shader_idx]);
+            mesh.draw(&self.shaders[*shader_idx]); 
         }
         // self.camera.send_uniforms(&self.shaders[0]);
     }
@@ -62,9 +62,9 @@ impl Renderer {
     pub fn push_mesh_with_shader(&mut self, mesh: Mesh, shader: Shader) {
         self.shaders.push(shader);
         let shader_idx = self.shaders.len() - 1; // account for the default shader
-        unsafe {
-            self.shaders[shader_idx].use_shader()
-        }
+        // unsafe {
+            // self.shaders[shader_idx].use_shader()
+        // }
         self.meshes.push((mesh, shader_idx));
     }
 

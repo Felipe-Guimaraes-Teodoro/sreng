@@ -6,8 +6,6 @@ use cgmath::*;
 use std::ptr;
 use std::ffi::CStr;
 
-use crate::renderer::{DFS, DVS};
-
 #[derive(Clone, Copy, Debug)]
 pub struct Shader {
     pub id: u32,
@@ -61,6 +59,10 @@ impl Shader {
         UseProgram(self.id);
     }
 
+    pub unsafe fn stop_shader(&self) {
+
+    }
+
     pub unsafe fn uniform_1f(&self, name: &CStr, val: f32) {
         Uniform1f(GetUniformLocation(self.id, name.as_ptr()), val);
     }
@@ -85,7 +87,7 @@ impl Shader {
 pub unsafe fn check_shader_error(shader: u32) {
     let mut success = gl::FALSE as GLint;
     let mut info_log = Vec::with_capacity(512);
-    info_log.set_len(512 - 1); // skip the trailing null char
+    info_log.set_len(54); // skip the trailing null char
     GetShaderiv(shader, COMPILE_STATUS, &mut success);
     if success != gl::TRUE as GLint {
         GetShaderInfoLog(

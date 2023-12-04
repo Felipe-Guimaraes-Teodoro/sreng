@@ -58,7 +58,7 @@ impl Camera {
         );
 
         Self {
-            proj: perspective(Deg(70.0), 1.0, 0.1, 10000.0),
+            proj: perspective(Deg(70.0), 1.0, 0.1, 100000.0),
             view, 
 
             pos,
@@ -99,6 +99,9 @@ impl Camera {
         self.last_frame = curr_frame;
 
         if window.get_key(Key::LeftShift) == Action::Press {
+            speed *= 20.0;
+        }
+        if window.get_key(Key::RightShift) == Action::Press {
             speed *= 20.0;
         }
 

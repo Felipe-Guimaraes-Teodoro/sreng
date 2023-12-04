@@ -35,6 +35,19 @@ impl Shapes {
         Mesh::new(vertices, indices)
     }
 
+    pub fn fullscreen_quad() -> (Vec<f32>, Vec<u32>) {
+        (
+            vec![
+                -1.0, -1.0, 0.0,
+                -1.0, 1.0, 0.0,
+                1.0, -1.0, 0.0,
+                1.0, 1.0, 0.0,
+            ],
+
+            vec![0, 1, 2, 2, 1, 3]
+        )
+    }
+
     pub fn cube_raw(p: Vector3<f32>, i: u32) -> (Vec<f32>, Vec<u32>) {
         (vec![
             -1.0 + p.x, -1.0 + p.y,  1.0 + p.z, //0
@@ -68,6 +81,21 @@ impl Shapes {
         mesh.model = Matrix4::from_angle_x(Deg(90.0));
 
         mesh
+    }
+
+    pub fn rect_raw(tl: [f32; 2], br: [f32; 2]) -> (Vec<f32>, Vec<u32>) {
+        let verts: Vec<f32> = vec![
+            tl[0], tl[1], 0.0,
+            br[0], tl[1], 0.0,
+            br[0], br[1], 0.0,
+            tl[0], br[1], 0.0,
+        ];
+        let inds: Vec<u32> = vec![
+            0, 1, 2,
+            0, 2, 3
+        ];
+
+        (verts, inds)
     }
 
     pub fn cube(v: Vector3<f32>) -> Mesh {

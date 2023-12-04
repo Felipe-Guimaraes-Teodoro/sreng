@@ -1,7 +1,14 @@
 use glfw::*;
-use crate::{renderer::*, ui::Imgui, physics::*}; 
+use std::sync::mpsc::channel;
+use crate::{renderer::*, ui::Imgui, physics::*, world}; 
 use cgmath::*;
 use rand::prelude::*;
+use threadpool::ThreadPool;
+
+use std::sync::{Mutex, Arc};
+use once_cell::sync::Lazy;
+
+// static TEST: Lazy<Mutex<Renderer>> = Lazy::new(|| Renderer::new().into() );
 
 pub struct App {
     // todo: renderer, ui
@@ -10,17 +17,11 @@ pub struct App {
     pub ui: Imgui,
     renderer: Renderer,
 
-    obj: Vec<PPoint>,
     controller: Controller,
-}
 
-fn rand_vec3() -> Vector3<f32> {
-    let mut g = rand::thread_rng();
-    let x = g.gen_range(-10.0..=10.0);
-    let y = g.gen_range(0.0..=900.0);
-    let z = g.gen_range(-10.0..=10.0);
+    world: world::World,
 
-    vec3(x, y, z)
+    frametimes: Vec<f32>,
 }
 
 impl App {
@@ -28,63 +29,91 @@ impl App {
         let mut renderer = Renderer::new();
 
         // glfw.set_swap_interval(glfw::SwapInterval::Sync(1));
-        // renderer.camera.set_projection(ProjectionType::Orthographic);
+        // renderer.camera.set_projection(ProectionType::Orthographic);
         
-        renderer.push_mesh(
-            Shapes::floor(500.0, 500.0),
-        );
-
-        let mut obj = vec![];
-        for i in 0..1 {
-            obj.push(
-                PPoint::new(
-                    rand_vec3(),
-                    rand_vec3(),
-                    1.0,
-                    1.0,
-                )
-            );
-            let mut cube = Shapes::cube(vec3(0.0, 0.99, 0.0));
-            cube.model += Matrix4::from_scale(100.0);
-            renderer.push_mesh_with_shader(
-                cube,
-                Shader::new_pipeline(VS2, FS2)
-            );
-        }
-
         let controller = Controller::new();
+
+        let mut world = world::World::new();
+
+        // for x in 0..16 {
+        //     GLOBAL_POOL.execute(move || {
+        //         // push_global_mesh(world::create_chunk(x, 0));        
+        //         // GLOBAL_MESHES.write().unwrap().push(world::create_chunk(x, 0));
+        //         GLOBAL_MESHES
+        //             .get_mut()
+        //             .expect("fail")
+        //             .get_mut()
+        //             .push(world::create_chunk(x, 0));
+        //     });
+        // }
+        // for i in 0..GLOBAL_MESHES.write().unwrap().len() {
+            // renderer.push_mesh(GLOBAL_MESHES.write().unwrap()[i]);
+        // }
+        //
+        
+        for x in 0..2 {
+            for y in 0..2 {
+                renderer.push_mesh(world.create_chunk(x, y));
+            }
+        }
 
         Self {
             window,
             glfw,
             ui,
-            renderer,
+            renderer, 
 
-            obj,
             controller,
+
+            world,
+
+            frametimes: vec![],
         }
     }
 
     pub fn update(&mut self) {
-        // let cube = &self.renderer.meshes[2].0;
-
-        // self.renderer.get_mesh(0);
         self.renderer.update(&mut self.window, &mut self.glfw);
-        
-        // println!("{:.2}", 1.0 / dt);
+
         let frame = self.ui.frame(&mut self.window);
 
-        frame.text("Hello, world!");
+        self.frametimes.push( 1.0 / self.renderer.camera.dt );
+        if self.frametimes.len() > 128 {
+            self.frametimes.remove(0);
+        }
 
-        // for i in 0..self.obj.len() {
-        //     self.obj[i].update();
-        //     self.renderer.meshes[i+1].0.set_translation(
-        //         self.obj[i].pos
-        //     );
-        // }
+        frame.text(format!(
+                "framerate: {:.0}",
+                self.frametimes.iter().sum::<f32>() / 128.0
+            ));
 
-        self.controller.input(&mut self.window, &mut self.renderer.camera);
-        self.controller.update();
+        let t = frame.plot_lines("fps", &self.frametimes)
+            .graph_size([150.0, 50.0]);
+        t.build();
+
+        let mut fdl = frame.get_foreground_draw_list();
+        
+        fdl.add_text([0.0, 0.0], (1.0, 1.0, 0.0), "Hello, world!");
+        fdl.add_text([0.0, 12.0], (0.7, 0.7, 0.7), "build UNSTABLE v0.2");
+        fdl.add_text([128.0, 12.0], (0.5, 0.5, 1.0), TUTORIAL_TXT);
+        fdl.add_text([0.0, 36.0], (1.0, 0.2, 0.2), format!("AMM: {:?}", self.renderer.meshes.len()));
+
+        if self.renderer.meshes.len() > 256 {
+            self.renderer.meshes.remove(
+                self.world.get_mesh_idx_far_away(
+                    -self.renderer.camera.pos.z, 
+                    -self.renderer.camera.pos.x,
+                )
+            );
+            // self.world.make_far_away_chunk_inviz();
+        }
+        self.world.update(
+            -self.renderer.camera.pos.z, 
+            -self.renderer.camera.pos.x,
+            &mut self.renderer,
+            &mut fdl,
+            frame.frame_count(),
+        );
+
     }
 
     pub unsafe fn draw(&mut self) {
@@ -103,3 +132,8 @@ impl App {
         self.renderer.mouse(x, y, &mut self.window);
     }
 }
+
+const TUTORIAL_TXT: &str = "F1: Dots
+F2: Lines
+F3: Fill
+";
